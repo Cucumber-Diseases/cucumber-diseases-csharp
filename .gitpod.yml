@@ -1,17 +1,7 @@
-image:
-  file: .gitpod.Dockerfile
-
-tasks:
-  - init: mvn install -DskipTests=false
+image: gitpod/workspace-dotnet
 
 vscode:
   extensions:
-    - vscjava.vscode-java-pack
+    - muhammad-sammy.csharp
     - nguyenngoclong.gherkin-editor
 #    - cucumberopen.cucumber-official
-
-jetbrains:
-    intellij:
-        plugins:
-            - gherkin
-            - cucumber-java

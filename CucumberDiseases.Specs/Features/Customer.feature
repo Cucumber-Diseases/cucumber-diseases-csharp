@@ -43,6 +43,7 @@ Feature: Customer
       Given the customer name is Max Mustermann
       And the second customer is Max Mustermann
       When the customer is created
+      When the second customer is created
       Then the second customer creation should fail
 
 

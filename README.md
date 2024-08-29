@@ -1,49 +1,75 @@
 # Diagnosis and Treatment of Cucumber Diseases in Java with Cucumber
 
-Can you spot the Cucumber Diseases in this code? We’ll explore the code smells lurking in Gherkin and Cucumber. 🧪👃 These subtle yet impactful issues can creep into our test scenarios, affecting readability, maintainability, and overall quality.
+Can you spot the Cucumber Diseases in this code? We’ll explore the code smells lurking in Gherkin and [Reqnroll](https://reqnroll.net/). 🧪👃 These subtle yet impactful issues can creep into our test scenarios, affecting readability, maintainability, and overall quality.
 
 Refactor this code, take small steps, run the tests often. See how small and beautiful can make it.
 
 ## Installation
-For the workshop Java 17 or later is a pre-requisite for building und runnnig the Cucumber features. It needs to be installed before the local setup.
+For the workshop .NET 8 or later is a pre-requisite for building und runnnig the Gherkin features. It needs to be installed before the local setup.
 
-### Local
+### Microsoft Visual Studio 2022
+Our **recommendation** for C# and .NET development is to use Microsoft Visual Studio 2022 and the **the Reqnroll extension**. By installing the Reqnroll extension you add features like Gherkin syntax highlighting, navigation between Gherkin and step definitions, ... 
+A detailed decription of features and the [installation & setup guideline](https://docs.reqnroll.net/latest/installation/setup-ide.html) is available on the Reqnroll web pages.
 
-* Clone the repository localy
-* Import the repository in your favourite IDE and configure the Maven build
-* Install a Cucumber extension or plugin in you IDE
-   * IntelliJ IDEA: https://www.jetbrains.com/help/idea/cucumber-support.html
-   * VS Code: https://marketplace.visualstudio.com/items?itemName=CucumberOpen.cucumber-official
-   * Eclipse: https://marketplace.eclipse.org/content/cucumber-eclipse-plugin
+1. Either clone the repository locally via command line or in Microsoft Visual Studio 2022:
+   - Open **Microsoft Visual Studio 2022**.
+   - Go to **File** > **Clone Repository**.
+   - Paste the repository URL into the **Repository Location** field and click **Clone**.
+   
+2. Open the solution in Visual Studio after cloning.
+3. Build the solution to ensure all dependencies are resolved.
+4. Run the Gherkin tests to verify functionality.
+
+### Visual Studio Code
+
+> [!NOTE]
+> The integration for building and running Gherkin tests in VS Cosde is less seamless compared to Microsoft Visual Studio and the Reqnroll extension, which provides a more features for C# and .NET development.
+
+There is a similar installation procedure for VS Code like for Microsoft Visual Studio 2022.
+
+1. Either clone the repository locally via command line or in Visual Studio Code:
+   - Open **Visual Studio Code**.
+   - Open the **Command Palette** (`Ctrl+Shift+P`), then select **Git: Clone**.
+   - Paste the repository URL when prompted and select a local directory to clone the repository.
+
+2. Open the cloned repository folder in Visual Studio Code.
+
+3. Install the **Cucumber (Gherkin) Full Support** extension from the VS Code Marketplace for Gherkin syntax support.
+
+4. Build the solution using the terminal or the integrated build tasks.
+
+5. Run the Gherkin tests via the terminal or test explorer.
+
 
 #### Platform notes
-The VC Code Cucumber extension fails on any Unix distribution. It's recommended to use VS Code on Windows.
 
-Restrictions of missing Cucumber extension on Unix:
-* You won't have Gherkin support
-* You can't generate step definition
-* There is NO linkage between your feature files and step definition implementation
-* You are still able to edit all file and execute your Unit Tests.
-
+> [!IMPORTANT]
+> The VC Code Cucumber extension fails on any Unix distribution. It's recommended to use VS Code on Windows.
+>
+> Restrictions of missing Cucumber extension on Unix:  <br>
+> * You won't have Gherkin support
+> * You can't generate step definition
+> * There is NO linkage between your feature files and step definition implementation
+> * You are still able to edit all file and execute your Unit Tests.
+> 
+   
 ### gitpod.io
-Since gitpod.io uses Linux, the same restrictions as on any other Unix distribution apply.
 
-<a href="https://gitpod.io/#https://github.com/rolger/cucumber-diseases-java" target="_blank"> 
+<a href="https://gitpod.io/#https://github.com/Cucumber-Diseases/cucumber-diseases-csharp" target="_blank"> 
 <img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod">
-</a>
+</a> <br>
 
-1. [Login to GitHub](https://github.com/login) or [create an account](https://github.com/join).
+> [!IMPORTANT]
+> Since Gitpod VS Code Browser uses Linux, the same restrictions as on any other Unix distribution apply.
+> 
+> Additionally, Gitpod VS Code Browser does not support the official C# extension, which means you’ll be missing key features like unit test support and the solution explorer.
 
-2. [Create a new workspace at Gitpod](https://gitpod.io/new/#https://github.com/rolger/cucumber-diseases-java).
-   This usually takes a little while, just be patient.
+> [!NOTE]
+> If you like to use Gitpod for .NET, the recommended solution is [Gitpod with VS Code Desktop](https://www.gitpod.io/docs/references/ides-and-editors/vscode). 
 
-3. At the bottom there is a Terminal window executing the Maven build the of project. Wait until _BUILD SUCCESS_ apprears in the log.
-  
-5. Open  from the file tree on the left and wait for the Java installation to finish.
+## 📝 Refactoring Exercises
 
-6. After the installation is done, you can open files via the Java Project explorer, edit the code, and select _Run Tests_ on either the test folder or the _RunAllCucumberTests_ class file.
+The code in the `main` branch contains multiple Cucumber smells. The smells can be removed by a variety of refactoring exercises. It's recommended to follow the suggested order. 
 
-## Refactoring Exercises
-
-The code contains multiple Cucumber smells. It's recommended to follow the suggested order. Each smell and exercise is described in a seperate assingment.
+Look at our [Code Smells Documentation](https://cucumber-diseases.github.io/exercise/) for a detailed introduction to all exercises.
 
