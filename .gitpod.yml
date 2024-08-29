@@ -1,0 +1,17 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: mvn install -DskipTests=false
+
+vscode:
+  extensions:
+    - vscjava.vscode-java-pack
+    - nguyenngoclong.gherkin-editor
+#    - cucumberopen.cucumber-official
+
+jetbrains:
+    intellij:
+        plugins:
+            - gherkin
+            - cucumber-java
