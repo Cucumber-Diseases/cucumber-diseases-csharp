@@ -9,7 +9,7 @@ public class CustomerService
 
     public void AddCustomer(string firstName, string lastName, DateTime birthday)
     {
-        if (firstName == "" || lastName == "")
+        if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
         {
             throw new ArgumentException("Mandatory name parameter is missing"); ;
         }
