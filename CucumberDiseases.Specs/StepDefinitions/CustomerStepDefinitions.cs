@@ -90,12 +90,6 @@ public class CustomerStepDefinitions
     }
 
     [Given("there is a customer")]
-    public void GivenThereIsACustomer(Table customerTable)
-    {
-        var customer = customerTable.Header.ToArray();
-        _customerService.AddCustomer(customer[0], customer[1], DefaultBirthday);
-    }
-
     [Given("there are some customers")]
     public void GivenThereAreSomeCustomers(Table customerTable)
     {
