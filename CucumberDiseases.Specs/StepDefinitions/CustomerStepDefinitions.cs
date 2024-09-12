@@ -13,7 +13,6 @@ public class CustomerStepDefinitions
     private readonly CustomerService _customerService;
     private string _firstName;
     private string _lastName;
-    private DateTime _birthday;
     private string _secondFirstName;
     private string _secondLastName;
     private int _count;
@@ -34,12 +33,6 @@ public class CustomerStepDefinitions
     public void GivenTheCustomerLastNameIs(string lastName)
     {
         _lastName = lastName;
-    }
-
-    [Given("the customer's birthday is {DateTime}")]
-    public void GivenTheCustomersBirthdayIs(DateTime birthday)
-    {
-        _birthday = birthday;
     }
 
     [Given("the customer name is {} {}")]
