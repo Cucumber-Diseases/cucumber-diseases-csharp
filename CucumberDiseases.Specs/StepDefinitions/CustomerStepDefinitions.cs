@@ -99,10 +99,10 @@ public class CustomerStepDefinitions
         _count = _customerService.FindAllCustomers().Count;
     }
 
-    [When("the customer Sabine Mustermann is searched")]
-    public void WhenTheCustomerSabineMustermannIsSearched()
+    [When("the customer {} {} is searched")]
+    public void WhenTheCustomerIsSearched(string firstName, string lastName)
     {
-        _count = _customerService.FindCustomers("Sabine", "Mustermann").Count;
+        _count = _customerService.FindCustomers(firstName, lastName).Count;
     }
 
     [Then("the customer can be found")]
@@ -113,12 +113,12 @@ public class CustomerStepDefinitions
         customer.Should().BeEquivalentTo(new { FirstName = _firstName, LastName = _lastName });
     }
 
-    [Then("the customer Sabine Mustermann can be found")]
-    public void ThenTheCustomerSabineMustermannCanBeFound()
+    [Then("the customer {} {} can be found")]
+    public void ThenTheCustomerCanBeFound(string firstName, string lastName)
     {
-        var customerByName = _customerService.FindCustomer("Sabine", "Mustermann");
+        var customerByName = _customerService.FindCustomer(firstName, lastName);
 
-        customerByName.Should().BeEquivalentTo(new { FirstName = "Sabine", LastName = "Mustermann" });
+        customerByName.Should().BeEquivalentTo(new { FirstName = firstName, LastName = lastName });
     }
 
     [Then("the second customer can be found")]
