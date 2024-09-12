@@ -10,10 +10,7 @@ public class CustomerStepDefinitions
     private static readonly DateTime DefaultBirthday = DateTime.Parse("01/01/1995");
 
     private readonly CustomerService _customerService;
-    private string _firstName;
-    private string _lastName;
-    private string _secondFirstName;
-    private string _secondLastName;
+
     private int _count;
     private ArgumentException _error;
 
@@ -22,40 +19,14 @@ public class CustomerStepDefinitions
         _customerService = customerService;
     }
 
-    [Given("the customer name is {} {}")]
-    public void GivenTheCustomerNameIs(string firstName, string lastName)
-    {
-        _firstName = firstName;
-        _lastName = lastName;
-    }
-
-    [Given("the second customer is (.*) (.*)")]
-    public void GivenTheSecondCustomerIs(string firstName, string lastName)
-    {
-        _secondFirstName = firstName;
-        _secondLastName = lastName;
-    }
-
-    [When("the customer is created")]
-    [When("an invalid customer is created")]
-    public void CreateCustomerAndHandleException()
+    [When("the customer {} {} is created")]
+    [When("an invalid customer {} {} is created")]
+    [When("the second customer {} {} is created")]
+    public void CreateCustomerAndHandleException(string firstName, string lastName)
     {
         try
         {
-            _customerService.AddCustomer(_firstName, _lastName, DefaultBirthday);
-        }
-        catch (ArgumentException ex)
-        {
-            _error = ex;
-        }
-    }
-
-    [When("the second customer is created")]
-    public void WhenTheSecondCustomerIsCreated()
-    {
-        try
-        {
-            _customerService.AddCustomer(_secondFirstName, _secondLastName, DefaultBirthday);
+            _customerService.AddCustomer(firstName, lastName, DefaultBirthday);
         }
         catch (ArgumentException ex)
         {
@@ -111,28 +82,13 @@ public class CustomerStepDefinitions
         _count = _customerService.FindCustomers(firstName, lastName).Count;
     }
 
-    [Then("the customer can be found")]
-    public void ThenTheCustomerCanBeFound()
-    {
-        var customer = _customerService.FindCustomer(_firstName, _lastName);
-
-        customer.Should().BeEquivalentTo(new { FirstName = _firstName, LastName = _lastName });
-    }
-
     [Then("the customer {} {} can be found")]
+    [Then("the second customer {} {} can be found")]
     public void ThenTheCustomerCanBeFound(string firstName, string lastName)
     {
         var customerByName = _customerService.FindCustomer(firstName, lastName);
 
         customerByName.Should().BeEquivalentTo(new { FirstName = firstName, LastName = lastName });
-    }
-
-    [Then("the second customer can be found")]
-    public void ThenTheSecondCustomerCanBeFound()
-    {
-        var customer = _customerService.FindCustomer(_secondFirstName, _secondLastName);
-
-        customer.Should().BeEquivalentTo(new { FirstName = _secondFirstName, LastName = _secondLastName });
     }
 
     [Then("the number of customers found is {int}")]
