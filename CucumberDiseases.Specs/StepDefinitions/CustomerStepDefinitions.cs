@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using FluentAssertions;
 using Reqnroll;
 
@@ -37,7 +36,6 @@ public class CustomerStepDefinitions
         _secondLastName = lastName;
     }
 
-    [Given("the customer is created")]
     [When("the customer is created")]
     [When("an invalid customer is created")]
     public void CreateCustomerAndHandleException()
@@ -84,11 +82,6 @@ public class CustomerStepDefinitions
     {
     }
 
-    [Given("are no customers")]
-    public void GivenNoCustomersExists()
-    {
-    }
-
     [Given("there is a customer")]
     [Given("there are some customers")]
     public void GivenThereAreSomeCustomers(Table customerTable)
@@ -112,25 +105,12 @@ public class CustomerStepDefinitions
         _count = _customerService.FindCustomers("Sabine", "Mustermann").Count;
     }
 
-    [When("the customer Rose Smith is searched")]
-    public void WhenTheCustomerRoseSmithIsSearched()
-    {
-    }
-
     [Then("the customer can be found")]
     public void ThenTheCustomerCanBeFound()
     {
         var customer = _customerService.FindCustomer(_firstName, _lastName);
 
         customer.Should().BeEquivalentTo(new { FirstName = _firstName, LastName = _lastName });
-    }
-
-    [Then("the customer can not be found")]
-    public void ThenTheCustomerCanNotBeFound()
-    {
-        var customer = _customerService.FindCustomer(_firstName, _lastName);
-
-        customer.Should().BeNull();
     }
 
     [Then("the customer Sabine Mustermann can be found")]
