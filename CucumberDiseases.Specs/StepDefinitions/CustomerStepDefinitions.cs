@@ -53,6 +53,14 @@ public class CustomerStepDefinitions
     [When("the second customer is created")]
     public void WhenTheSecondCustomerIsCreated()
     {
+        try
+        {
+            _customerService.AddCustomer(_secondFirstName, _secondLastName, DefaultBirthday);
+        }
+        catch (ArgumentException ex)
+        {
+            _error = ex;
+        }
     }
 
     [Then("the customer creation should be successful")]
@@ -71,10 +79,8 @@ public class CustomerStepDefinitions
     [Then("the second customer creation should fail")]
     public void ThenTheSecondCustomerCreationShouldFail()
     {
-        var add = () => _customerService.AddCustomer(_secondFirstName, _secondLastName, DefaultBirthday);
-        add.Should()
-            .Throw<ArgumentException>()
-            .WithMessage("Customer already exists");
+        _error.Should().NotBeNull();
+        _error.Message.Should().Be("Customer already exists");
     }
 
     [Given("there are no customers")]
@@ -124,7 +130,6 @@ public class CustomerStepDefinitions
     [Then("the second customer can be found")]
     public void ThenTheSecondCustomerCanBeFound()
     {
-        _customerService.AddCustomer(_secondFirstName, _secondLastName, DefaultBirthday);
         var customer = _customerService.FindCustomer(_secondFirstName, _secondLastName);
 
         customer.Should().BeEquivalentTo(new { FirstName = _secondFirstName, LastName = _secondLastName });
