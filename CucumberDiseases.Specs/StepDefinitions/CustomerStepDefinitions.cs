@@ -23,18 +23,6 @@ public class CustomerStepDefinitions
         _customerService = customerService;
     }
 
-    [Given("the customer first name is {string}")]
-    public void GivenTheCustomerFirstNameIs(string firstName)
-    {
-        _firstName = firstName;
-    }
-
-    [Given("the customer last name is {string}")]
-    public void GivenTheCustomerLastNameIs(string lastName)
-    {
-        _lastName = lastName;
-    }
-
     [Given("the customer name is {} {}")]
     public void GivenTheCustomerNameIs(string firstName, string lastName)
     {
