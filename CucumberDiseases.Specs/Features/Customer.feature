@@ -11,8 +11,7 @@ Feature: Customer
       Given there are no customers
       And the customer name is Rose Smith
       When the customer is created
-      And all customers are searched
-      Then the number of customers found is 1
+      Then the customer can be found
 
 
   Rule: The first name and last name must be provided
