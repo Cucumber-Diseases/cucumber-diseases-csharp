@@ -91,6 +91,7 @@ public class CustomerStepDefinitions
     [Then("the customer creation should be successful")]
     public void ThenTheCustomerCreationShouldBeSuccessful()
     {
+        _error.Should().BeNull();
     }
 
     [Then("the customer creation should fail")]
